@@ -61,7 +61,7 @@ public class StudentSvcClientApiTest {
 	 * 
 	 * @throws Exception
 	 */
-	@Test
+	//@Test
 	public void testVideoAddAndList() throws Exception {
 		
 		Student studentA = new Student();

@@ -20,7 +20,7 @@ public class HelloSaveTest {
 			.build()
 			.create(Jason.class);
 	
-	@Test
+	//@Test
 	public void testVideoAddAndList() throws Exception {
 		Student studentA = new Student();
 		studentA.setFirstName("junitRollnull");

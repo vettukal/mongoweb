@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.example.ServerInfo;
 import com.example.student.repository.Jason;
 import com.example.student.repository.Student;
 
@@ -16,12 +17,12 @@ public class HelloSaveTest {
 	
 	private static final String LOCATION_SERVER = "http://localhost:80";
 	private static Jason jsoncontroll = new RestAdapter.Builder()
-			.setEndpoint(LOCATION_SERVER)
+			.setEndpoint(ServerInfo.SEVER_URL)
 			.setLogLevel(LogLevel.FULL)
 			.build()
 			.create(Jason.class);
 	
-	@Test
+	//@Test
 	public void testVideoAddAndList() throws Exception {
 		Student studentA = new Student();
 		studentA.setFirstName("junitRollnull");
