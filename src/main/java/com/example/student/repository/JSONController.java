@@ -1,6 +1,7 @@
 package com.example.student.repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,9 @@ public class JSONController implements Jason {
     }
 	
 	@RequestMapping(value = "/hellosave", method = RequestMethod.GET)
-    public @ResponseBody String hellosaveget() {
-        return "hellosave";
+    public @ResponseBody List<Student> hellosave() {
+		return studrepo.findAll();
     }
+
+	
 }
