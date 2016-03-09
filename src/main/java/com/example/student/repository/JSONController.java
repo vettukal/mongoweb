@@ -16,7 +16,7 @@ import com.mkyong.common.model.Shop;
 
 
 @RestController
-public class JSONController {
+public class JSONController implements Jason {
 	@Autowired StudentRepository studrepo;
 	
 	@RequestMapping(value="/kfc/{name}", method = RequestMethod.GET)
@@ -38,8 +38,12 @@ public class JSONController {
     }
 	
 	@RequestMapping(value = "/hellosave", method = RequestMethod.POST)
-    public void hellosave(@RequestBody Student student) {
-        studrepo.save(student);
+    public @ResponseBody Student hellosave(@RequestBody Student student) {
+        return studrepo.save(student);
     }
 	
+	@RequestMapping(value = "/hellosave", method = RequestMethod.GET)
+    public @ResponseBody String hellosaveget() {
+        return "hellosave";
+    }
 }
