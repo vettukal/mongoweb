@@ -1,29 +1,38 @@
 package com.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 
+import com.example.student.repository.Student;
+import com.example.student.repository.StudentRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pcsma.midsem.SpringMongoConfig;
 import com.pcsma.midsem.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.student.json.ResourcesMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SpringBootApplication
-public class SkeletonApplication {
+//@ComponentScan(basePackages = { "com.example" })
+public class SkeletonApplication extends RepositoryRestMvcConfiguration {
 	
 	private static final Logger log = LoggerFactory.getLogger(SkeletonApplication.class);
-
+	@Autowired StudentRepository repo;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SkeletonApplication.class, args);
 	}
@@ -43,7 +52,21 @@ public class SkeletonApplication {
 			userA.setName("abc");
 			userA.setAge(10);
 			
+			
+			
 			mongoOperation.save(userA);
+			
+			Student studentA = new Student();
+			studentA.setFirstName("MainApp");
+			studentA.setLastName("GDA");
+			mongoOperation.save(studentA);
+			
+			
+			Student studentB = new Student();
+			studentB.setFirstName("studentBrepo");
+			studentB.setLastName("GDA");
+			repo.save(studentB);
+			
 
 			// find
 			
@@ -133,4 +156,11 @@ public class SkeletonApplication {
             log.info("");
 		};
 	}
+	
+	
+	
+//	@Override
+//	public ObjectMapper halObjectMapper(){
+//		return new ResourcesMapper();
+//	}
 }
