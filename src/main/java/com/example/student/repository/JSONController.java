@@ -47,6 +47,11 @@ public class JSONController implements Jason {
     public @ResponseBody List<Student> hellosave() {
 		return studrepo.findAll();
     }
+	
+	@RequestMapping(value = "/hellodelete", method = RequestMethod.GET)
+    public void hellodelete() {
+		 studrepo.deleteAll();
+    }
 
 	
 }

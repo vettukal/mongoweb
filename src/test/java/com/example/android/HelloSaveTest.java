@@ -1,4 +1,4 @@
-package com.example.retrofit;
+package com.example.android;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,10 @@ import retrofit.RestAdapter;
 import retrofit.RestAdapter.LogLevel;
 
 public class HelloSaveTest {
-
-	private Jason jsoncontroll = new RestAdapter.Builder()
-			.setEndpoint("http://localhost:80")
+	
+	private static final String LOCATION_SERVER = "http://localhost:80";
+	private static Jason jsoncontroll = new RestAdapter.Builder()
+			.setEndpoint(LOCATION_SERVER)
 			.setLogLevel(LogLevel.FULL)
 			.build()
 			.create(Jason.class);
@@ -40,4 +41,22 @@ public class HelloSaveTest {
 		String out = studlist.toString();
 		System.out.println();
 	}
+	
+	public Student saveObject(String firstName, String lastName, 
+			String email, String rollno, List<String> subjects){
+		Student studentA = new Student();
+		
+		
+		studentA.setFirstName(firstName);
+		studentA.setLastName(lastName);
+		studentA.setEmail(email);
+		
+		
+		studentA.setSubjects(subjects);
+		studentA.setRollno(rollno);
+		
+		Student result = jsoncontroll.hellosave(studentA);
+		return result;
+	}
+	
 }
