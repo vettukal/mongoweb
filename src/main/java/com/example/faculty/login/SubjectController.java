@@ -1,6 +1,7 @@
 package com.example.faculty.login;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +14,9 @@ import com.example.faculty.Faculty;
 public class SubjectController 
 {
 	@RequestMapping(value="/subjectpage", method=RequestMethod.GET)
-    public String greetingForm(@ModelAttribute Faculty faculty , @RequestParam(value = "item") String item) 
+    public String greetingForm(@ModelAttribute Faculty faculty , @RequestParam(value = "item") String item ,  Model model) 
     {
+		model.addAttribute("subject" , item);
 		System.out.println(item);
         return "subject";
     }

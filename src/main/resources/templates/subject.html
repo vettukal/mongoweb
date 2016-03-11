@@ -6,7 +6,8 @@
 
 </head>
 <body>
-hii..
+ <p th:text="'id: ' + ${subject}" />
 
+<a th:href="@{/createquiz(subject=${subject})}" > Create Quiz  </a>  
 </body>
 </html>
