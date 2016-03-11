@@ -81,5 +81,25 @@ public class QuizDetails
 		
 	}
 	
+	public String toString()
+	{
+	   StringBuilder builder = new StringBuilder();
+	   builder.append(this.getQuestion())
+		      .append(", ")
+		      .append(this.getQuizId())
+		      .append(", ")
+		      .append(this.getMaxTime())
+		      .append(", ")
+		      .append(this.getSubject())
+		      .append(", ")
+		      .append(this.getEndingTime())
+		      .append(", ")
+		      .append(this.getCreationTime());
+		      //.append(", ")
+		      //.append(this.getSubjects().toString());
+	   
+	   return builder.toString();
+	}
+	
 	
 }
