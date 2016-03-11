@@ -1,6 +1,8 @@
 package com.example.faculty;
 
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,7 +22,16 @@ public class Faculty
 	private String name ;
 	private String eMail ;
 	private String password ;
+	private List<String> subjectlist ;
 	
+	public List<String> getSubjectlist() {
+		return subjectlist;
+	}
+
+	public void setSubjectlist(List<String> subjectlist) {
+		this.subjectlist = subjectlist;
+	}
+
 	public Faculty(){
 		
 	}

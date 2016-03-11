@@ -22,6 +22,9 @@ public class FacultyAdmin {
     @RequestMapping(value="/register/faculty", method=RequestMethod.POST)
     public String greetingSubmit(@ModelAttribute Faculty faculty, Model model) {
         model.addAttribute("faculty", faculty);
+        System.out.println(faculty.geteMail());
+        System.out.println(faculty.getSubjectlist());
+        
         repo.save(faculty);
         return "successregister";
     }

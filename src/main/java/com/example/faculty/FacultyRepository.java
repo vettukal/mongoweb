@@ -11,5 +11,5 @@ public interface FacultyRepository extends MongoRepository<Faculty, String> {
 
 	List<Faculty> findByName(@Param("name") String name);
 	List<Faculty> findByEMail(@Param("eMail") String eMail);
-
+	
 }
