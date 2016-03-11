@@ -7,7 +7,11 @@
 <body>
 	<h1>Result</h1>
     
-    <p th:text="'content: ' + ${faculty.eMail}" />
-   
+    <p th:text="'Welcome ' + ${requiredFaculty.eMail}" />
+    
+     <th:block th:each="items: ${requiredFaculty.subjectlist}" >
+    		<a th:href="@{/subjectpage(item=${items})}" >  <p th:text="${items}" />  </a>  
+	</th:block>
+  
 </body>
 </html>
