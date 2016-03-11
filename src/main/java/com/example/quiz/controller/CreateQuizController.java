@@ -29,8 +29,12 @@ public class CreateQuizController {
     @RequestMapping(value="/createquiz", method=RequestMethod.POST)
     public String greetingSubmit(@ModelAttribute QuizDetails quizdetails, Model model) {
         model.addAttribute("quizdetails", quizdetails);
+        if(quizdetails.getMaxTime()==null){
+        	quizdetails.setMaxTime(1);
+        }
         quizdetails.setCreationTime(System.currentTimeMillis());
         quizdetails.setEndingTime(quizdetails.getCreationTime()+(60*1000*quizdetails.getMaxTime()));
+        
         System.out.println(quizdetails.toString());
         repo.save(quizdetails);
         return "quiz/quizcreated";

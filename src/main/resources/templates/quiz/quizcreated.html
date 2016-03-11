@@ -65,10 +65,10 @@ h1{
 </head>
 
 <body>
-	<h1>Result</h1>
-    <p th:text="'id: ' + ${quizdetails.quizId}" />
-    <p th:text="'content: ' + ${quizdetails.question}" />
-    <a href="/createquiz">Submit another message</a>
+	<h1>Quiz created</h1>
+    <p th:text="'QuizId: ' + ${quizdetails.quizId}" />
+    <p th:text="'Question: ' + ${quizdetails.question}" />
+    <a href="/createquiz">Go back to subject page</a>
     
     <h1>Countdown Clock</h1>
 <div id="clockdiv">
@@ -92,6 +92,12 @@ h1{
       <script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout-f961f59a28ef4fd551736b43f94620b5.js"></script>
 <script src="/js/clock.js"></script>
     
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    var deadline = new Date(Date.parse( new Date()) + /*[[${quizdetails.maxTime * 60 * 1000}]]*/ );
+    initializeClock('clockdiv', deadline);
+    /*]]>*/
+    </script>
         
 
     
