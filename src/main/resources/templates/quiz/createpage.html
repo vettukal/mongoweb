@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form</h1>
+    <form action="#" th:action="@{/createquiz}" th:object="${quizdetails}" method="post">
+    	
+        <p>Unique Quiz Id: <input type="text" th:field="*{quizId}" /></p>
+        <p>Question(optional): <input type="password" th:field="*{question}" /></p>
+        <p>Time (integer): <input type="text" th:field="*{maxTime}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
