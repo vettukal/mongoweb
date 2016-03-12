@@ -13,13 +13,22 @@ public class QuizDetails
 {
 	@Id private String id;
 	
-	@Column(unique=true)
+	//@Column(unique=true)
 	private Integer quizId;
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
 	private Long creationTime;
 	private Long endingTime;
 	private Integer maxTime;
 	private String question;
 	private String subject;
+	private String answer;
 	
 	public String getSubject() {
 		return subject;

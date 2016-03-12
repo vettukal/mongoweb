@@ -11,8 +11,15 @@ public class QuizMarks
 	@Id private String id;
 	
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	private Integer quizId;
 	private String rollNo;
+	private String email;
 	private String subject;
 	private Integer marks;
 	

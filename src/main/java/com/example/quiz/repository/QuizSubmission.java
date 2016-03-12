@@ -13,6 +13,13 @@ public class QuizSubmission
 	
 	private Integer quizId;
 	private String rollNo;
+	private String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	private String subject;
 	private String option;
 	public String getId() {
