@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource( path = "quizmarks")
-public interface QuizMarksRepository extends MongoRepository<QuizSubmission, String> {
+public interface QuizMarksRepository extends MongoRepository<QuizMarks, String> {
 
 	List<QuizDetails> findByQuizId(@Param("quizid") Integer quizId);
 

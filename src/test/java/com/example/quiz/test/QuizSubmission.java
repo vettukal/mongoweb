@@ -1,4 +1,4 @@
-package com.example.quiz.repository;
+package com.example.quiz.test;
 
 import javax.persistence.Column;
 

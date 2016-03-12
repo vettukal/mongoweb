@@ -10,5 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface StudentRepository extends MongoRepository<Student, String> {
 
 	List<Student> findByLastName(@Param("name") String name);
+	List<Student> findByEmail(@Param("name") String name);
 
 }

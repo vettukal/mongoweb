@@ -5,7 +5,7 @@ import javax.persistence.Column;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "quizsubmission")
+@Document(collection = "quizmarks")
 public class QuizMarks 
 {
 	@Id private String id;
@@ -55,7 +55,9 @@ public class QuizMarks
 		this.subject = subject;
 	}
 	
-	
+	public String toString(){
+		return this.getMarks()+" "+this.getQuizId();
+	}
 	
 	
 	

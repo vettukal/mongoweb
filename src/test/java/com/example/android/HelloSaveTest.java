@@ -22,18 +22,18 @@ public class HelloSaveTest {
 			.build()
 			.create(Jason.class);
 	
-	//@Test
+	@Test
 	public void testVideoAddAndList() throws Exception {
 		Student studentA = new Student();
-		studentA.setFirstName("junitRollnull");
-		studentA.setLastName("list is done.");
+		studentA.setFirstName("junit_12mar");
+		studentA.setLastName("testing again.");
 		studentA.setEmail("vince@gmail.com");
 		
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("pcsma");
 		list.add("ml");
 		studentA.setSubjects(list);
-		studentA.setRollno("helloroll");
+		studentA.setRollno("mt14030");
 		
 		
 		System.out.println(jsoncontroll.hellosave(studentA));

@@ -11,5 +11,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface QuizDetailsRepository extends MongoRepository<QuizDetails, String> {
 
 	List<QuizDetails> findByQuizId(@Param("quizid") Integer quizId);
-
+	List<QuizDetails> findByEndingTimeGreaterThan(@Param("time") Long presentTime);
+	List<QuizDetails> findByQuizIdAndSubject(Integer quizId, String subject);
 }
