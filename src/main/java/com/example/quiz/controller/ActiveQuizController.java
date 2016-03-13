@@ -23,6 +23,9 @@ import com.example.quiz.repository.QuizSubmissionRepository;
 import com.example.student.repository.Student;
 import com.example.student.repository.StudentRepository;
 
+import retrofit.http.GET;
+import retrofit.http.Query;
+
 
 
 @Controller
@@ -77,6 +80,26 @@ public class ActiveQuizController implements QuizSvc{
         System.out.println("this is markrepo save:"+markrepo.save(qm));
     	return subrepo.save(quizsub);
     }
+    
+    @RequestMapping(value="/getmarks", method=RequestMethod.GET)
+	public @ResponseBody List<QuizMarks> getMarks(@RequestParam("subject") String subject
+			,@RequestParam("email") String email){
+    	
+    	return markrepo.findBySubjectAndEmail(subject, email);
+    }
+
+	@Override
+	@RequestMapping(value="/isdone", method=RequestMethod.GET)
+	public @ResponseBody Boolean isDone(@RequestParam("email") String email) {
+		QuizDetails qd = greetingForm(email);
+		if(qd==null)
+			return false;
+		List<QuizSubmission> qs = subrepo.findByQuizIdAndSubjectAndEmail(qd.getQuizId(), qd.getSubject(), email);
+		if(qs.size()>0)
+			return true;
+		else
+			return false;
+	}
 
     
 

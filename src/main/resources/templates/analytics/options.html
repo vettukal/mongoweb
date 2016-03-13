@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Bar Chart</title>
+		<script src="../Chart.js"></script>
+</head>
+<body>
+
+<h1 align="center">Single Quiz Stats</h1>
+
+<p th:text="'QuizId: ' + ${quizid}" />
+<p th:text="'Subject: ' + ${subject}" />
+
+<div align="center" style="width: 50%">
+			<canvas id="canvas" height="450" width="600"></canvas>
+		</div>
+
+
+	<script type="text/javascript" th:inline="javascript">
+	var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+	/*<![CDATA[*/
+	           //Arrays.toString(arrayString)
+	var barChartData = {
+			 
+		labels :  /*[[${arrayString}]]*/,
+		
+		datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,0.8)",
+				highlightFill: "rgba(220,220,220,0.75)",
+				highlightStroke: "rgba(220,220,220,1)",
+				
+				data : /*[[${arrayData}]]*/
+					
+			}
+		]
+
+	}
+	 /*]]>*/
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myBar = new Chart(ctx).Bar(barChartData, {
+			responsive : true
+		});
+	}
+
+	</script>
+	
+	
+</body>
+</html>

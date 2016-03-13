@@ -6,8 +6,15 @@
 
 </head>
 <body>
- <p th:text="'id: ' + ${subject}" />
+ <h1 align="center" th:text="${subject}" />
+ 
+ 
 
-<a th:href="@{/createquiz(subject=${subject})}" > Create Quiz  </a>  
+<a align="center" th:href="@{/createquiz(subject=${subject})}" > Create New Quiz  </a>  
+
+<h2> See the Graph for Individual Quiz</h2>
+ <th:block th:each="items: ${qlist}" >
+    		<a th:href="@{/get_quiz_stat(quizid=${items},subject=${subject})}" >  <p th:text="Quiz Id: ${items}" />  </a>  
+	</th:block>
 </body>
 </html>

@@ -67,8 +67,10 @@ h1{
 <body>
 	<h1>Quiz created</h1>
     <p th:text="'QuizId: ' + ${quizdetails.quizId}" />
+    <p th:text="'Subject: ' + ${quizdetails.subject}" />
     <p th:text="'Question: ' + ${quizdetails.question}" />
     <a href="/createquiz">Go back to subject page</a>
+    <a th:href="@{/get_quiz_stat(quizid=${quizdetails.quizId},subject=${quizdetails.subject})}" >  <p> Go to Results </p>  </a> 
     
     <h1>Countdown Clock</h1>
 <div id="clockdiv">

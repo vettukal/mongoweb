@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.quiz.repository.QuizDetails;
+import com.example.quiz.repository.QuizMarks;
 import com.example.quiz.repository.QuizSubmission;
 
 import retrofit.http.Body;
@@ -21,4 +22,12 @@ public interface QuizSvc {
 	
 	@GET("/activequiz")
 	public QuizDetails greetingForm(@Query("email") String email);
+	
+	@GET("/getmarks")
+	public List<QuizMarks> getMarks(@Query("subject") String subject
+			,@Query("email") String email);
+	
+	@GET("/isdone")
+	public Boolean isDone(@Query("email") String email);
+	
 }
