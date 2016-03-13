@@ -30,4 +30,9 @@ public interface QuizSvc {
 	@GET("/isdone")
 	public Boolean isDone(@Query("email") String email);
 	
+	@GET("/getaverage")
+	public Float getDone(@Query("subject") String subject);
+	
+	
+	
 }

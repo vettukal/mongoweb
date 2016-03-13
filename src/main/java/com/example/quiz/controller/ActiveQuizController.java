@@ -66,6 +66,15 @@ public class ActiveQuizController implements QuizSvc{
         Integer quizId = quizsub.getQuizId();
         List<QuizDetails> qdlist = repo.findByQuizIdAndSubject(quizId, subject);
         QuizDetails qd = qdlist.get(0);
+        if(qd.getAnon()!=null){
+        	if(qd.getAnon().equalsIgnoreCase("anon")){
+            	// we have to make two qm and quizsub as anon@anon.com
+            	qm.setEmail("anon@anon.com");
+            	quizsub.setEmail("anon@anon.com");
+            }
+        }
+        
+        
         if(qd.getEndingTime()<time){
         	return null;
         }
@@ -99,6 +108,24 @@ public class ActiveQuizController implements QuizSvc{
 			return true;
 		else
 			return false;
+	}
+
+	@Override
+	@RequestMapping(value="/getaverage", method=RequestMethod.GET)
+	public @ResponseBody Float getDone(@RequestParam("subject") String subject) {
+		List<QuizMarks> qmlist = markrepo.findBySubject(subject);
+		Float correct = (float) 0.0;
+		Float total = (float) 0.0;
+		for (QuizMarks qiter : qmlist) {
+			if(qiter==null)
+				continue;
+			if(qiter.getMarks()==null)
+				continue;
+			if(qiter.getMarks()==1)
+				correct++;
+			total++;
+		}
+		return correct/total;
 	}
 
     

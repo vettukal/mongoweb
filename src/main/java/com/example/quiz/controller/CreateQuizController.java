@@ -36,6 +36,8 @@ public class CreateQuizController {
         quizdetails.setEndingTime(quizdetails.getCreationTime()+(60*1000*quizdetails.getMaxTime()));
         
         System.out.println(quizdetails.toString());
+        //if(quizdetails.getAnon()==null)
+        //	quizdetails.setAnon("iden");
         repo.save(quizdetails);
         return "quiz/quizcreated";
     }

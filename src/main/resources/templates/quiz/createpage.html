@@ -16,6 +16,7 @@
         <p>Question(optional): <input type="text" th:field="*{question}" /></p>
         <p>Time (integer,default=1): <input type="text"  th:field="*{maxTime}" /></p>
         <p>Correct Answer: <input type="text"  th:field="*{answer}" /></p>
+        <p><input type="checkbox" th:field="*{anon}" th:value="anon" th:text="Anonymous"/></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 </body>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+
+</head>
+<body>
+ <h1 align="center" th:text="${subject}" />
+ 
+ 
+<h2> See the Graph for Individual Quiz</h2>
+ <th:block th:each="items: ${qlist}" >
+    		<a th:href="@{/get_stud_stat(email=${items},subject=${subject})}" >  <p th:text="${items}" />  </a>  
+	</th:block>
+</body>
+</html>

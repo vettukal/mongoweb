@@ -27,23 +27,23 @@ public class QuizClient {
 	
 	@Test
 	public void testVideoAddAndList() throws Exception {
-		com.example.quiz.repository.QuizDetails qd = quizControl.greetingForm("vince@gmail.com");
-		if(qd==null)
-		{
+		//com.example.quiz.repository.QuizDetails qd = quizControl.greetingForm("vince@gmail.com");
+		//if(qd==null)
+		//{
 			// there are no active quize
-			return;
-		}
-		System.out.println("quizsubmitTest: "+qd.getQuizId()+" : "+qd.getQuestion());
+			//return;
+		//}
+		//System.out.println("quizsubmitTest: "+qd.getQuizId()+" : "+qd.getQuestion());
 		
-		Integer quizId = qd.getQuizId();
-		String subject = qd.getSubject();
+		//Integer quizId = qd.getQuizId();
+		//String subject = qd.getSubject();
 		
 		QuizSubmission qs = new QuizSubmission();
-		qs.setQuizId(quizId);
-		qs.setSubject(subject);
-		qs.setEmail("khatif@gmail.com");
-		qs.setOption("c");
-		qs.setRollNo("Mt14030");
+		qs.setQuizId(2);
+		qs.setSubject("maths");
+		qs.setEmail("newton@gmail.com");
+		qs.setOption("a");
+		qs.setRollNo("Mt14040");
 		
 		System.out.println(quizControl.submitQuiz(qs));
 		

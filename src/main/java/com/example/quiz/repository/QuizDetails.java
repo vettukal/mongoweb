@@ -29,7 +29,16 @@ public class QuizDetails
 	private String question;
 	private String subject;
 	private String answer;
+	private String anon;
 	
+	public String getAnon() {
+		return anon;
+	}
+
+	public void setAnon(String anon) {
+		this.anon = anon;
+	}
+
 	public String getSubject() {
 		return subject;
 	}
