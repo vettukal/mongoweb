@@ -10,15 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Faculty 
 {
 	@Id private String id;
-	
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	private String name ;
 	private String eMail ;
 	private String password ;
@@ -71,6 +62,14 @@ public class Faculty
 	public void setPassword(String password)
 	{
 		this.password = password;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

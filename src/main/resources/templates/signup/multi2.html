@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+ <link rel="stylesheet" href="../css/stylemulti.css"/>
+ <script src="../js/scriptmulti.js"></script>
+</head>
+<body>
+
+<form id="msform" th:action="@{/register/faculty3}" th:object="${spage}" method="post">
+
+  <!-- progressbar -->
+  <ul id="progressbar">
+    <li>Account Setup</li>
+    <li class="active">Personal Details</li>
+    <li>Subjects</li>
+  </ul>
+  <!-- fieldsets -->
+  
+  <fieldset>
+    <h2 class="fs-title">Give your details</h2>
+    <h3 class="fs-subtitle">This is step 2</h3>
+    
+    
+    
+    
+    <input type="text" name="email" placeholder="Firstname" th:field="*{firstName}"/>
+    <input type="text" name="pass" placeholder="SecondName" th:field="*{lastName}"/>
+    
+    <input type="submit" name="submit" class="submit action-button" value="Next" />
+  </fieldset>
+  
+</form></body>
+</html>
