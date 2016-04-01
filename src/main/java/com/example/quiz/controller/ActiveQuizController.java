@@ -133,7 +133,10 @@ public class ActiveQuizController implements QuizSvc{
 
 	@Autowired
 	FacultyRepository facrepo;
+	
+	
 	@Override
+	@RequestMapping(value="/getaverage", method=RequestMethod.GET)
 	public List<String> getSubject() {
 		List<Faculty> list = facrepo.findAll();
 		List<String> subjects = new ArrayList<String>();
