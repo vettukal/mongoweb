@@ -1,5 +1,6 @@
 package com.example.quiz.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.faculty.Faculty;
+import com.example.faculty.FacultyRepository;
 import com.example.quiz.repository.QuizDetails;
 import com.example.quiz.repository.QuizDetailsRepository;
 import com.example.quiz.repository.QuizMarks;
@@ -126,6 +129,21 @@ public class ActiveQuizController implements QuizSvc{
 			total++;
 		}
 		return correct/total;
+	}
+
+	@Autowired
+	FacultyRepository facrepo;
+	@Override
+	public List<String> getSubject() {
+		List<Faculty> list = facrepo.findAll();
+		List<String> subjects = new ArrayList<String>();
+		
+		for (Faculty faciter : list) {
+			for (String siter : faciter.getSubjectlist()) {
+				subjects.add(siter);
+			}
+		}
+		return subjects;
 	}
 
     

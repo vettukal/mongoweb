@@ -33,6 +33,9 @@ public interface QuizSvc {
 	@GET("/getaverage")
 	public Float getDone(@Query("subject") String subject);
 	
+	@GET("/getsubjects")
+	public List<String> getSubject();
+	
 	
 	
 }
