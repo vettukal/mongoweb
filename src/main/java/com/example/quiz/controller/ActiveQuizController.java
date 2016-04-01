@@ -1,8 +1,10 @@
 package com.example.quiz.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
+import org.hibernate.sql.HSQLCaseFragment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -134,18 +136,41 @@ public class ActiveQuizController implements QuizSvc{
 	@Autowired
 	FacultyRepository facrepo;
 	
-	
 	@Override
-	@RequestMapping(value="/getaverage", method=RequestMethod.GET)
-	public List<String> getSubject() {
+	@RequestMapping(value="/getsubjects", method=RequestMethod.GET)
+	public @ResponseBody List<String> getSubject(@RequestParam("subject") String subject) {
 		List<Faculty> list = facrepo.findAll();
 		List<String> subjects = new ArrayList<String>();
 		
-		for (Faculty faciter : list) {
-			for (String siter : faciter.getSubjectlist()) {
-				subjects.add(siter);
+		HashSet<String> hs = new HashSet();
+		subjects.add("pcsma");
+		for (Faculty faculty : list) {
+			System.out.println(faculty);
+			List<String> subiterlist = faculty.getSubjectlist();
+			if(subiterlist!=null){
+				for (String siter : subiterlist) {
+					hs.add(siter);
+					System.out.println(siter);
+				}
 			}
 		}
+		
+		for (String siter : hs) {
+			subjects.add(siter);
+		}
+		/**
+		for (Faculty faciter : list) {
+			if(faciter!=null){
+				for (String siter : faciter.getSubjectlist()) {
+					if(siter!=null){
+						subjects.add(siter);
+					}
+					
+				}
+			}
+			
+		}
+		*/
 		return subjects;
 	}
 

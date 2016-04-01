@@ -34,7 +34,7 @@ public interface QuizSvc {
 	public Float getDone(@Query("subject") String subject);
 	
 	@GET("/getsubjects")
-	public List<String> getSubject();
+	public List<String> getSubject(@Query("subject") String subject);
 	
 	
 	
