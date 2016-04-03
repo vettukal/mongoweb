@@ -1,5 +1,7 @@
 package com.example.quiz.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +34,15 @@ public class CreateQuizController {
         if(quizdetails.getMaxTime()==null){
         	quizdetails.setMaxTime(1);
         }
+        
+        List<QuizDetails> qdlist = repo.findAll();
+        int max =1;
+        for (QuizDetails qditer : qdlist) {
+			int num = qditer.getQuizId();
+			if(num>max)
+				max = num;
+		}
+        quizdetails.setQuizId(max);
         quizdetails.setCreationTime(System.currentTimeMillis());
         quizdetails.setEndingTime(quizdetails.getCreationTime()+(60*1000*quizdetails.getMaxTime()));
         
