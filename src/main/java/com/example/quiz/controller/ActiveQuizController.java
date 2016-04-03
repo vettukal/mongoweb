@@ -45,6 +45,8 @@ public class ActiveQuizController implements QuizSvc{
         List<QuizDetails> qdlist = repo.findByEndingTimeGreaterThan(time);
         
         List<Student> studlist = studrepo.findByEmail(email);
+        if(studlist.size()<1)
+        	return null;
         List<String> subjects = studlist.get(0).getSubjects();
         
         for(QuizDetails qiter : qdlist){
@@ -172,6 +174,46 @@ public class ActiveQuizController implements QuizSvc{
 		}
 		*/
 		return subjects;
+	}
+
+	@Override
+	@RequestMapping(value="/getstudsubjects", method=RequestMethod.GET)
+	public List<String> getStudSubject(@RequestParam("subject") String subject) {
+//		
+//		List<Student> studlist = studrepo.findAll();
+//		for (Student student : studlist) {
+//			if(student.getEmail()==null){
+//				continue;
+//			}
+//			if(student.getSubjects()==null)
+//				continue;
+//				
+//			if(student.getEmail().equalsIgnoreCase(subject)){
+//				return student.getSubjects();
+//			}
+//		}
+		return null;
+	}
+	
+	
+	@Override
+	@RequestMapping(value="/getaverage2done", method=RequestMethod.GET)
+	public @ResponseBody List<String> getDone2(@RequestParam("subject") String subject) {
+		List<Student> studlist = studrepo.findAll();
+		for (Student student : studlist) {
+			if(student.getEmail()==null){
+				continue;
+			}
+			if(student.getSubjects()==null)
+				continue;
+				
+			if(student.getEmail().equalsIgnoreCase(subject)){
+				return student.getSubjects();
+			}
+		}
+		
+		ArrayList<String> alstr = new ArrayList<>();
+		return alstr;
 	}
 
     

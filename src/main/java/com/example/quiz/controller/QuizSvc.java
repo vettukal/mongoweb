@@ -37,5 +37,11 @@ public interface QuizSvc {
 	public List<String> getSubject(@Query("subject") String subject);
 	
 	
+	@GET("/getstudsubjects")
+	public List<String> getStudSubject(@Query("subject") String subject);
+	
+	@GET("/getaverage2done")
+	public List<String> getDone2(@Query("subject") String subject);
+	
 	
 }
