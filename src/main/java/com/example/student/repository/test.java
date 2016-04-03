@@ -15,19 +15,19 @@ public class test {
 			.build()
 			.create(QuizSvc.class);
 	
-	public static void main(String[] args) {
-
-		List<String> sublist = quizControl.getStudSubject("vince@gmail.com");
-		for (String siter : sublist)
-		{
-			System.out.println(siter);
-		}
-		
-		List<String> subjects = quizControl.getSubject("hello");
-		for (String siter : subjects) {
-			System.out.println(siter);
-		}
-
-	}
+//	public static void main(String[] args) {
+//
+//		List<String> sublist = quizControl.getStudSubject("vince@gmail.com");
+//		for (String siter : sublist)
+//		{
+//			System.out.println(siter);
+//		}
+//		
+//		List<String> subjects = quizControl.getSubject("hello");
+//		for (String siter : subjects) {
+//			System.out.println(siter);
+//		}
+//
+//	}
 
 }
