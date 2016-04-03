@@ -37,12 +37,15 @@ public class CreateQuizController {
         
         List<QuizDetails> qdlist = repo.findAll();
         int max =1;
-        for (QuizDetails qditer : qdlist) {
-			int num = qditer.getQuizId();
-			if(num>max)
-				max = num;
-		}
-        quizdetails.setQuizId(max);
+        if(qdlist!=null){
+        	for (QuizDetails qditer : qdlist) {
+    			int num = qditer.getQuizId();
+    			if(num>max)
+    				max = num;
+    		}
+        }
+        
+        quizdetails.setQuizId(max+1);
         quizdetails.setCreationTime(System.currentTimeMillis());
         quizdetails.setEndingTime(quizdetails.getCreationTime()+(60*1000*quizdetails.getMaxTime()));
         
