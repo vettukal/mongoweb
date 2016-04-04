@@ -16,27 +16,27 @@ public class Retrofit {
 			.build()
 			.create(GmobileSvc.class);
 	
-	//@Test
-	public static void main2(String[] args) throws Exception {
-		
-		Gmobile mobile = new Gmobile();
-		mobile.setXaxis("2");
-		mobile.setYaxis("511111");
-		mobile.setZaxis("6");
-		
-		mobile.setLattitude("23");
-		mobile.setLongitude("23");
-		
-		Gmobile mobile2 = new Gmobile();
-		mobile.setXaxis("2");
-		mobile.setYaxis("522222");
-		mobile.setZaxis("6");
-		
-		mobile.setLattitude("23");
-		mobile.setLongitude("23");
-		
-		ArrayList<Gmobile> list = new ArrayList<>();
-		System.out.println(gmobileControl.submitGmobileList(list));;
-		
-	}
+//	//@Test
+//	public static void main2(String[] args) throws Exception {
+//		
+//		Gmobile mobile = new Gmobile();
+//		mobile.setXaxis("2");
+//		mobile.setYaxis("511111");
+//		mobile.setZaxis("6");
+//		
+//		mobile.setLattitude("23");
+//		mobile.setLongitude("23");
+//		
+//		Gmobile mobile2 = new Gmobile();
+//		mobile.setXaxis("2");
+//		mobile.setYaxis("522222");
+//		mobile.setZaxis("6");
+//		
+//		mobile.setLattitude("23");
+//		mobile.setLongitude("23");
+//		
+//		ArrayList<Gmobile> list = new ArrayList<>();
+//		System.out.println(gmobileControl.submitGmobileList(list));;
+//		
+//	}
 }
