@@ -4,6 +4,7 @@ package com.example.quiz.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.quiz.repository.QuizDetails;
@@ -37,5 +38,13 @@ public interface QuizSvc {
 	public List<String> getSubject(@Query("subject") String subject);
 	
 	
+	@GET("/getstudsubjects")
+	public List<String> getStudSubject(@Query("subject") String subject);
+
+	
+
+	@GET("/getaverage2done")
+	public List<String> getDone2(@Query("subject") String subject);
+
 	
 }
