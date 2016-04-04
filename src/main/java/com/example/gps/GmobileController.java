@@ -24,7 +24,7 @@ public class GmobileController implements GmobileSvc {
 
 	@Override
 	@RequestMapping(value = "/submitgmobilelist", method = RequestMethod.POST)
-	public String submitGmobileList(@RequestBody List<Gmobile> mobile) {
+	public @ResponseBody String submitGmobileList(@RequestBody List<Gmobile> mobile) {
 		for (Gmobile gmobile : mobile) {
 			repo.save(gmobile);
 		}
