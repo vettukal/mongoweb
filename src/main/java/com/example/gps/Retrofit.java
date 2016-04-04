@@ -17,7 +17,7 @@ public class Retrofit {
 			.create(GmobileSvc.class);
 	
 	//@Test
-	public static void main(String[] args) throws Exception {
+	public static void main2(String[] args) throws Exception {
 		
 		Gmobile mobile = new Gmobile();
 		mobile.setXaxis("2");
