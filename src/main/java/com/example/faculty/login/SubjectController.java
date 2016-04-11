@@ -42,5 +42,49 @@ public class SubjectController
 		model.addAttribute("qlist",qidlist);
         return "subject";
     }
+	
+	@RequestMapping(value="/subjectpage2", method=RequestMethod.GET)
+    public String greetingForm2(@ModelAttribute Faculty faculty , @RequestParam(value = "item") String item ,  Model model) 
+    {
+		model.addAttribute("subject" , item);
+		
+		System.out.println(item);
+		
+		List<QuizDetails> qdlist = detailrepo.findAll();
+		HashSet<Integer> hs = new HashSet<>();
+		for (QuizDetails qiter : qdlist) {
+			hs.add(qiter.getQuizId());
+		}
+		
+		ArrayList<Integer> qidlist = new ArrayList<>();
+		for (Integer iter : hs) {
+			qidlist.add(iter);
+		}
+		Collections.sort(qidlist);
+		model.addAttribute("qlist",qidlist);
+        return "subject";
+    }
+	
+	@RequestMapping(value="/subjectpage3", method=RequestMethod.GET)
+    public String greetingFor3(@ModelAttribute Faculty faculty , @RequestParam(value = "item") String item ,  Model model) 
+    {
+		model.addAttribute("subject" , item);
+		
+		System.out.println(item);
+		
+		List<QuizDetails> qdlist = detailrepo.findAll();
+		HashSet<Integer> hs = new HashSet<>();
+		for (QuizDetails qiter : qdlist) {
+			hs.add(qiter.getQuizId());
+		}
+		
+		ArrayList<Integer> qidlist = new ArrayList<>();
+		for (Integer iter : hs) {
+			qidlist.add(iter);
+		}
+		Collections.sort(qidlist);
+		model.addAttribute("qlist",qidlist);
+        return "subject2";
+    }
 
 }

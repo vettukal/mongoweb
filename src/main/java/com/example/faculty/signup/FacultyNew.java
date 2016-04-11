@@ -173,7 +173,7 @@ public class FacultyNew {
     	    System.out.println(myCounter.getSubject4());
     	    System.out.println(myCounter.getSubject5());
     	    repo.save(fac);
-    	    return "signup/success";
+    	    return "signup/success2";
     	
        
       

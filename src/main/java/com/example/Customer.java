@@ -12,6 +12,8 @@ public class Customer {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     private String firstName;
+    private String quizid;
+    private String subject;
     public String getFirstName() {
 		return firstName;
 	}
@@ -29,12 +31,52 @@ public class Customer {
 	}
 
 	private String lastName;
+	
+	private String faculty;
 
-    protected Customer() {}
+    public String getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+
+	protected Customer() {}
 
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+    
+    public String getQuizid() {
+		return quizid;
+	}
+
+	public void setQuizid(String quizid) {
+		this.quizid = quizid;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public Customer(String firstName, String lastName, String faculty) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.faculty = faculty;
+    }
+    
+    public Customer(String firstName, String lastName, String faculty,String quizid,String subject) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.faculty = faculty;
+        this.quizid = quizid;
+        this.subject = subject;
     }
 
     @Override

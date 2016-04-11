@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		
+
+
+        <link href="css/error.css" rel="stylesheet"/>
+		
+	</head>
+    <body>
+			<section class="home-bg img-responsive gray" data-type="parallax" style="background: url('images/bg1.png') no-repeat fixed center top / cover; width:100%;height: 720px;position: relative;">		
+					
+					<h1 align="center" style="color:white;" th:text="'Subject: ' + ${subject}" />
+					
+					<div class=" center animated bounce" >
+						
+                        <a th:href="@{/createquiz2(subject=${subject})}" > Create Quiz  </a> 
+					</div>
+					
+<!-- 					<h2>See the Graph for full Semester Perfomance</h2> -->
+<!-- <a th:href="@{/get_sem_stat(subject=${subject})}" >  <p>Full Sem Graph </p>  </a> -->
+<!-- <h2>See the Graph for each student</h2> -->
+<!-- <a th:href="@{/showstudentmark -->
+<!-- (subject=${subject})}" >  <p>Each Student Graph </p>  </a> -->
+<!-- <h2> See the Graph for Individual Quiz</h2> -->
+<!--  <th:block th:each="items: ${qlist}" > -->
+<!--     		<a th:href="@{/get_quiz_stat(quizid=${items},subject=${subject})}" >  <p th:text="${items}" />  </a>   -->
+<!-- 	</th:block> -->
+	
+			</section>
+		
+	</body>
+</html>

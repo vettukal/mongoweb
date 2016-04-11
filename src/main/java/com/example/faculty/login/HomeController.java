@@ -29,6 +29,19 @@ public class HomeController {
         System.out.println("home controller: "+faculty.geteMail());
         return "home";
     }
+    
+    @RequestMapping(value="/home2", method=RequestMethod.GET)
+    public String greetingForm2(@ModelAttribute Faculty faculty, 
+    		final BindingResult mapping1BindingResult,
+            final Model model) {
+       // model.addAttribute("faculty", faculty);
+        
+        List<Faculty> faculties = repo.findByEMail(faculty.geteMail());
+        model.addAttribute("requiredFaculty" , faculties.get(0));
+        
+        System.out.println("home controller: "+faculty.geteMail());
+        return "home2";
+    }
 
     
 

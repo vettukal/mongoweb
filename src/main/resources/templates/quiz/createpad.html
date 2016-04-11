@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Result</h1>
+    
+    <p th:text="'Welcome ' + ${mail}" />
+    
+   
+
+<br></br>
+   <h1>Copy this code</h1>
+    
+&#60;p&#62;&#60;iframe title="Euler Line Demo" 
+ src="http://52.87.180.132:9000/code2.html?user=%%USER_ID%%<span th:text="'&#38;faculty=' + ${mail}" />" width="802" height="802" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"&#62;
+Your browser does not support IFrames.
+&#60;/iframe&#62;&#60;/p&#62;
+    
+    
+  
+</body>
+</html>

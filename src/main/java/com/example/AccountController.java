@@ -34,20 +34,25 @@ public class AccountController {
 	@Autowired
 	CustomerRepository repository;
 	
-    @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public Map<String, Object> hello(@RequestParam(value = "userid", defaultValue = "Boxfuse") String userid, 
-    		@RequestParam(value = "link", defaultValue = "Boxfuse") String link) {
+	@RequestMapping(value = "/account", method = RequestMethod.GET)
+    public Map<String, Object> hello(
+    		@RequestParam(value = "userid", defaultValue = "Boxfuse") String userid, 
+    		@RequestParam(value = "link", defaultValue = "Boxfuse") String link, 
+    		@RequestParam(value = "faculty", defaultValue = "Naik") String faculty,
+    		@RequestParam(value = "quizid", defaultValue = "1") String quizid, 
+    		@RequestParam(value = "subject", defaultValue = "mc") String subject ) {
         
     	
     	// last name = userId;
     	// first name = link;
-    	List<Customer> customers = repository.findByLastName(userid);
+    	System.out.println("inside /account trying to save, Params: "+userid+" : "+link+" : "+faculty);
+    	List<Customer> customers = repository.findByLastNameAndFacultyAndQuizidAndSubject(userid, faculty, quizid, subject);;
     	boolean found = false;
     	if(customers.size()>0){
     		found = true;
     	}
     	else{
-    		repository.save(new Customer(link,userid));
+    		repository.save(new Customer(link,userid,faculty,quizid,subject));
     	}
     	Map<String, Object> result = new HashMap<>();
     	if(found){
@@ -61,6 +66,12 @@ public class AccountController {
         return result;
     }
     
+	@RequestMapping(value = "/accountdelete", method = RequestMethod.GET)
+    public @ResponseBody String hello123123(){
+		repository.deleteAll();
+		return "hello delted";
+		}
+
     @RequestMapping(value = "/getaccount", method = RequestMethod.GET)
     public Map<String, Object> hello(@RequestParam(value = "userid", defaultValue = "Boxfuse") String userid
     		, HttpServletResponse httpServletResponse) {
@@ -214,4 +225,48 @@ public class AccountController {
     	return repository.findAll();
         //httpServletResponse.setHeader("Location", "http://www.google.co.in");
     }
+    
+    @RequestMapping(value="/vince/{name}/{faculty}/{quizid}/{subject}", method = RequestMethod.GET)
+    public @ResponseBody Customer getCustomerInJSON2(@PathVariable String name, @PathVariable String faculty,
+    		@PathVariable String quizid, @PathVariable String subject) {
+
+		//Shop shop = new Shop();
+		Customer customer = new Customer();
+		//shop.setName(name);
+		//shop.setStaffName(new String[]{"mkyong1", "mkyong2"});
+		
+		
+		String userid = name;
+		// last name = userId;
+    	// first name = link;
+		System.out.println("Faculty got in the request to check inside /vince/{name}/{faculty}/{quizid}/{subject} : "+faculty);
+		System.out.println("/vince/{name}/{faculty}/{quizid}/{subject}: quizid: subject: "+quizid+" : "+subject);
+    	List<Customer> customers = repository.findByLastNameAndFacultyAndQuizidAndSubject(userid, faculty, quizid, subject);
+    	
+    	boolean found = false;
+    	if(customers.size()>0){
+    		System.out.println("/vince/{name}/{faculty}/{quizid}/{subject} found the customer");
+    		found = true;
+    	}
+    	
+    	String result = "";
+    	if(found){
+    		
+    		result = "{\"result\": \""+ customers.get(0).getFirstName()+ "\"}";
+    		customer = customers.get(0);
+    		//httpServletResponse.setHeader("Location", "https://www.google.co.in");
+    		
+    	}
+    	
+    	else {
+    		System.out.println("/vince/{name}/{faculty}/{quizid}/{subject} Customer NOT found");
+    		result = "{\"result\": \"\"}";
+    		customer = new Customer("", userid,faculty,quizid,subject);
+    	}
+    	
+		
+		
+		return customer;
+
+	}
 }

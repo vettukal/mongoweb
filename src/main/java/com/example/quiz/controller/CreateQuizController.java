@@ -25,6 +25,7 @@ public class CreateQuizController {
         System.out.println("Subject in GET is: "+subject);
         qd.setSubject(subject);
     	model.addAttribute("quizdetails", qd);
+    	
         return "quiz/createpage";
     }
 
@@ -54,6 +55,17 @@ public class CreateQuizController {
         //	quizdetails.setAnon("iden");
         repo.save(quizdetails);
         return "quiz/quizcreated";
+    }
+    
+    @RequestMapping(value="/createquiz2", method=RequestMethod.GET)
+    public String greetingForm2(Model model,@RequestParam("subject") String subject) {
+        QuizDetails qd = new QuizDetails();
+        System.out.println("Subject in GET is: "+subject);
+        qd.setSubject(subject);
+    	model.addAttribute("quizdetails", qd);
+    	model.addAttribute("subjectind",subject);
+    	model.addAttribute("testatt","testatt");
+        return "quiz/createpage2";
     }
 
 }
