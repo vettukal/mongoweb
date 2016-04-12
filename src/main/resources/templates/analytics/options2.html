@@ -13,10 +13,10 @@
 					
 					<h1 align="center" style="color:white;" th:text="'Subject: ' + ${subject}" />
 					
-					<div class=" center animated bounce" >
+<!-- 					<div class=" center animated bounce" > -->
 						
-                        <a th:href="@{/createquiz2(subject=${subject},email=${email})}" > Create Quiz  </a> 
-					</div>
+<!--                         <a th:href="@{/createquiz2(subject=${subject},email=${email})}" > Create Quiz  </a>  -->
+<!-- 					</div> -->
 					
 <!-- 					<h2>See the Graph for full Semester Perfomance</h2> -->
 <!-- <a th:href="@{/get_sem_stat(subject=${subject})}" >  <p>Full Sem Graph </p>  </a> -->
@@ -24,8 +24,8 @@
 <!-- <a th:href="@{/showstudentmark -->
 <!-- (subject=${subject})}" >  <p>Each Student Graph </p>  </a> -->
 <!-- <h2> See the Graph for Individual Quiz</h2> -->
- <th:block th:each="items: ${custlist}" >
-    		<h1><a th:href="@{/get_quiz_stat2(quizid=${items},subject=${subject},faculty=${email})}" >  <p th:text="${items}" />  </a>  </h1>
+<th:block th:each="items: ${flist}" >
+    		<a th:href="@{/code4.html(user=${items.lastName},faculty=${items.faculty},quizid=${items.quizid},subject=${items.subject},)}" >  <p th:text="${items.lastName}" />  </a> 
 	</th:block>
 	
 			</section>

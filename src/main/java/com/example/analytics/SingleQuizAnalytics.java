@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.Customer;
+import com.example.CustomerRepository;
 import com.example.quiz.repository.QuizMarks;
 import com.example.quiz.repository.QuizMarksRepository;
 import com.example.quiz.repository.QuizSubmission;
@@ -71,6 +73,40 @@ public class SingleQuizAnalytics {
 		
 		
 		return "analytics/options";
+	}
+	
+	@Autowired
+	CustomerRepository custrepo;
+	@RequestMapping(value="/get_quiz_stat2", method=RequestMethod.GET)
+    public String getQuizStat2(Model model,@RequestParam("quizid") String quizid,@RequestParam("subject") String subject,@RequestParam("faculty") String faculty) {
+		
+		System.out.println("QuizId: "+quizid+" subject: "+subject+" faculty: "+faculty);
+		model.addAttribute("subject",subject);
+		
+		List<Customer> cust = (List<Customer>) custrepo.findAll();
+		List<String> noteid = new ArrayList<>();
+		List<Customer> flist = new ArrayList<Customer>(); 
+		HashSet<String> hstr = new HashSet<>();
+		for (Customer custiter : cust) {
+			System.out.println(custiter.getQuizid()+" user: "+custiter.getFirstName()+" seconname: "+custiter.getLastName());
+			if(custiter.getQuizid().equalsIgnoreCase(quizid) && custiter.getSubject().equalsIgnoreCase(subject)&& custiter.getFaculty().equalsIgnoreCase(faculty)){
+				System.out.println("--------------------------------------");
+				System.out.println("Match found inside the if");
+				System.out.println("QuizId: "+quizid+" subject: "+subject+" faculty: "+faculty);
+				System.out.println(custiter.getQuizid()+" user: "+custiter.getFirstName()+" seconname: "+custiter.getLastName());
+				System.out.println("--------------------------------------");
+				
+				if(!hstr.contains(custiter.getFirstName())){
+					noteid.add(custiter.getFirstName());
+					hstr.add(custiter.getFirstName());
+					flist.add(custiter);
+				}
+			}
+		}
+		
+		model.addAttribute("custlist",noteid);
+		model.addAttribute("flist",flist);
+		return "analytics/options2";
 	}
 	
 	@RequestMapping(value="/get_sem_stat", method=RequestMethod.GET)

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.Customer;
+import com.example.CustomerRepository;
 import com.example.quiz.repository.QuizDetails;
 import com.example.quiz.repository.QuizDetailsRepository;
 
@@ -58,14 +60,39 @@ public class CreateQuizController {
     }
     
     @RequestMapping(value="/createquiz2", method=RequestMethod.GET)
-    public String greetingForm2(Model model,@RequestParam("subject") String subject) {
+    public String greetingForm2(Model model,@RequestParam("subject") String subject,@RequestParam("email") String email) {
         QuizDetails qd = new QuizDetails();
+        //email = email.replaceAll("@", "_");
+        //email = email.replaceAll(".", "_");
         System.out.println("Subject in GET is: "+subject);
+        System.out.println("email in the createquiz2 is:"+email);
         qd.setSubject(subject);
     	model.addAttribute("quizdetails", qd);
     	model.addAttribute("subjectind",subject);
     	model.addAttribute("testatt","testatt");
+    	model.addAttribute("quizid",getQuizid(subject,email));
+    	model.addAttribute("email",email);
         return "quiz/createpage2";
     }
+
+    @Autowired
+    CustomerRepository custrepo;
+	private Integer getQuizid(String subject,String email) {
+		List<Customer> list = (List<Customer>) custrepo.findAll();
+		int max = 0;
+		
+		for (Customer customer : list) {
+			System.out.println(customer.getQuizid());
+		}
+		for (Customer customer : list) {
+			if(customer.getFaculty().equalsIgnoreCase(email)&&customer.getSubject().equalsIgnoreCase(subject)){
+				if(Integer.parseInt(customer.getQuizid())>max){
+					max = Integer.parseInt(customer.getQuizid());
+				}
+			}
+			
+		}
+		return max+1;
+	}
 
 }
