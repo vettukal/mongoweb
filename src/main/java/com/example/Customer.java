@@ -1,69 +1,84 @@
 package com.example;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
-public class Customer {
+import java.util.List;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private long id;
-    private String firstName;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "custweb")
+public class Customer 
+{
+	@Id private String id;
+	private String firstName;
     private String quizid;
     private String subject;
-    public String getFirstName() {
+    private String lastName;
+	private String faculty;
+	
+	
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	private String lastName;
-	
-	private String faculty;
 
-    public String getFaculty() {
-		return faculty;
-	}
-
-	public void setFaculty(String faculty) {
-		this.faculty = faculty;
-	}
-
-	protected Customer() {}
-
-    public Customer(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    
-    public String getQuizid() {
+	public String getQuizid() {
 		return quizid;
 	}
+
 
 	public void setQuizid(String quizid) {
 		this.quizid = quizid;
 	}
 
+
 	public String getSubject() {
 		return subject;
 	}
 
+
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public String getFaculty() {
+		return faculty;
+	}
+
+
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
+
+
+	public Customer() {}
+
 
 	public Customer(String firstName, String lastName, String faculty) {
         this.firstName = firstName;
@@ -78,12 +93,9 @@ public class Customer {
         this.quizid = quizid;
         this.subject = subject;
     }
-
-    @Override
-    public String toString() {
-        return String.format(
-                "Customer[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+    
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-
 }
