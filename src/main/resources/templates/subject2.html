@@ -9,7 +9,7 @@
 		
 	</head>
     <body>
-			<section class="home-bg img-responsive gray" data-type="parallax" style="background: url('images/bg1.png') no-repeat fixed center top / cover; width:100%;height: 720px;position: relative;">		
+<!-- 			<section class="home-bg img-responsive gray" data-type="parallax" >		 -->
 					
 					<h1 align="center" style="color:white;" th:text="'Subject: ' + ${subject}" />
 					
@@ -28,7 +28,7 @@
     		<h1><a th:href="@{/get_quiz_stat2(quizid=${items},subject=${subject},faculty=${email})}" >  <p th:text="${items}" />  </a>  </h1>
 	</th:block>
 	
-			</section>
+<!-- 			</section> -->
 		
 	</body>
 </html>

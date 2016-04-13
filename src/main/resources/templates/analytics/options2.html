@@ -9,7 +9,7 @@
 		
 	</head>
     <body>
-			<section class="home-bg img-responsive gray" data-type="parallax" style="background: url('images/bg1.png') no-repeat fixed center top / cover; width:100%;height: 720px;position: relative;">		
+<!-- 			<section class="home-bg img-responsive gray" data-type="parallax" style="background: url('images/bg1.png') no-repeat fixed center top / cover; width:100%;height: 720px;position: relative;">		 -->
 					
 					<h1 align="center" style="color:white;" th:text="'Subject: ' + ${subject}" />
 					
@@ -28,7 +28,7 @@
     		<a th:href="@{/code4.html(user=${items.lastName},faculty=${items.faculty},quizid=${items.quizid},subject=${items.subject},)}" >  <p th:text="${items.lastName}" />  </a> 
 	</th:block>
 	
-			</section>
+<!-- 			</section> -->
 		
 	</body>
 </html>
