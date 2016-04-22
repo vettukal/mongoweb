@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mkyong.common.model.Shop;
+
 import com.pcsma.midsem.SpringMongoConfig;
 import com.pcsma.midsem.User;
 
@@ -171,53 +171,53 @@ public class AccountController {
     }
     
     
-    @RequestMapping(value="/mykong/{name}", method = RequestMethod.GET)
-    public @ResponseBody Shop getShopInJSON2(@PathVariable String name) {
-
-		Shop shop = new Shop();
-		shop.setName(name);
-		shop.setStaffName(new String[]{"mkyong1", "mkyong2"});
-		
-		return shop;
-
-	}
-    
-    @RequestMapping(value="/vince/{name}", method = RequestMethod.GET)
-    public @ResponseBody Customer getCustomerInJSON2(@PathVariable String name) {
-
-		Shop shop = new Shop();
-		Customer customer = new Customer();
-		shop.setName(name);
-		shop.setStaffName(new String[]{"mkyong1", "mkyong2"});
-		
-		
-		String userid = name;
-		// last name = userId;
-    	// first name = link;
-    	List<Customer> customers = repository.findByLastName(userid);
-    	boolean found = false;
-    	if(customers.size()>0){
-    		found = true;
-    	}
-    	
-    	String result = "";
-    	if(found){
-    		result = "{\"result\": \""+ customers.get(0).getFirstName()+ "\"}";
-    		customer = customers.get(0);
-    		//httpServletResponse.setHeader("Location", "https://www.google.co.in");
-    		
-    	}
-    	
-    	else {
-    		result = "{\"result\": \"\"}";
-    		customer = new Customer("", userid);
-    	}
-    	
-		
-		
-		return customer;
-
-	}
+//    @RequestMapping(value="/mykong/{name}", method = RequestMethod.GET)
+//    public @ResponseBody Shop getShopInJSON2(@PathVariable String name) {
+//
+//		Shop shop = new Shop();
+//		shop.setName(name);
+//		shop.setStaffName(new String[]{"mkyong1", "mkyong2"});
+//		
+//		return shop;
+//
+//	}
+//    
+//    @RequestMapping(value="/vince/{name}", method = RequestMethod.GET)
+//    public @ResponseBody Customer getCustomerInJSON2(@PathVariable String name) {
+//
+//		Shop shop = new Shop();
+//		Customer customer = new Customer();
+//		shop.setName(name);
+//		shop.setStaffName(new String[]{"mkyong1", "mkyong2"});
+//		
+//		
+//		String userid = name;
+//		// last name = userId;
+//    	// first name = link;
+//    	List<Customer> customers = repository.findByLastName(userid);
+//    	boolean found = false;
+//    	if(customers.size()>0){
+//    		found = true;
+//    	}
+//    	
+//    	String result = "";
+//    	if(found){
+//    		result = "{\"result\": \""+ customers.get(0).getFirstName()+ "\"}";
+//    		customer = customers.get(0);
+//    		//httpServletResponse.setHeader("Location", "https://www.google.co.in");
+//    		
+//    	}
+//    	
+//    	else {
+//    		result = "{\"result\": \"\"}";
+//    		customer = new Customer("", userid);
+//    	}
+//    	
+//		
+//		
+//		return customer;
+//
+//	}
     
 
     @RequestMapping(value = "/getall", method = RequestMethod.GET)
