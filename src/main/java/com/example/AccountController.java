@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.pcsma.midsem.SpringMongoConfig;
-import com.pcsma.midsem.User;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -134,13 +134,7 @@ public class AccountController {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>
     ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringMongoConfig.class);
 	MongoOperations mongoOperation = (MongoOperations) applicationContext.getBean("mongoTemplate");
-    @RequestMapping(value = "/getallmongo", method = RequestMethod.GET)
-    public @ResponseBody Iterable<User> getAllmongo() {
-    	
-    	List<User> luser = mongoOperation.findAll(User.class);
-    	return luser;
-        //httpServletResponse.setHeader("Location", "http://www.google.co.in");
-    }
+    
     
     @RequestMapping(value = "/getjson", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<String> json(@RequestParam(value = "userid", defaultValue = "Boxfuse") String userid
