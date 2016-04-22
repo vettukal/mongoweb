@@ -13,8 +13,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 
-import com.example.student.repository.Student;
-import com.example.student.repository.StudentRepository;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pcsma.midsem.SpringMongoConfig;
 
@@ -30,7 +29,7 @@ import org.slf4j.LoggerFactory;
 public class SkeletonApplication extends RepositoryRestMvcConfiguration {
 	
 	private static final Logger log = LoggerFactory.getLogger(SkeletonApplication.class);
-	@Autowired StudentRepository repo;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SkeletonApplication.class, args);
