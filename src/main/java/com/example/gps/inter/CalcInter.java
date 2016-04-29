@@ -122,7 +122,7 @@ public class CalcInter  {
 		 gm1.setZaxis("8.16901588439941");
 		 
 		 gm1.setLattitude("28.5464372");
-		 gm1.setLongitude("77.2694328");
+		 gm1.setLongitude("77.2644328");
 		 
 		 repo.save(gm1);
 		 
@@ -141,8 +141,8 @@ public class CalcInter  {
 		 gm1.setYaxis("6.6271505355835");
 		 gm1.setZaxis("9.73003578186035");
 		 
-		 gm1.setLattitude("28.5464372");
-		 gm1.setLongitude("77.2694328");
+		 gm1.setLattitude("28.5468372");
+		 gm1.setLongitude("77.2594328");
 		 
 		 repo.save(gm1);
 		 
@@ -156,9 +156,21 @@ public class CalcInter  {
 		 
 		 repo.save(gm1);
 		 
+		 gm1 = new Gmobile();
+		 gm1.setXaxis("0.24899697303772");
+		 gm1.setYaxis("3.00155258178711");
+		 gm1.setZaxis("7.79707336425781");
+		 
+		 gm1.setLattitude("28.5464362");
+		 gm1.setLongitude("77.2694348");
+		 
+		 repo.save(gm1);
+		 
 		 return gm1;
 		 
 	 }
+	 
+	 
 
 	
 }
