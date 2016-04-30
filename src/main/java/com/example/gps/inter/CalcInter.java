@@ -170,6 +170,28 @@ public class CalcInter  {
 		 
 	 }
 	 
+	 @RequestMapping(value = "/submitinter", method = RequestMethod.POST)
+	    public @ResponseBody InterGPS submitInter(@RequestBody InterGPS quizsub) {
+			
+			interrepo.save(quizsub);
+			return quizsub;
+			
+		}
+	 
+	 @RequestMapping(value = "/submitinterlist", method = RequestMethod.POST)
+	    public @ResponseBody List<InterGPS> submitInterList(@RequestBody List<InterGPS> quizsublist) {
+			
+		 for (InterGPS quizsub : quizsublist) {
+			 interrepo.save(quizsub);
+		}
+			
+			
+			return quizsublist;
+			
+		}
+	 
+	 
+	 
 	 
 
 	
