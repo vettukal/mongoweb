@@ -1,8 +1,10 @@
 package com.example.gps.inter2;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import org.apache.hadoop.mapred.join.ArrayListBackedIterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -103,12 +105,17 @@ public class CalcInter2  {
 	 @RequestMapping(value = "/submitinterlist2", method = RequestMethod.POST)
 	    public @ResponseBody List<InterGPS2> submitInterList(@RequestBody List<InterGPS2> quizsublist) {
 			
-		 for (InterGPS2 quizsub : quizsublist) {
-			 interrepo.save(quizsub);
-		}
+//		 for (InterGPS2 quizsub : quizsublist) {
+//			 interrepo.save(quizsub);
+//		}
+		 	interrepo.save(quizsublist);
 			
+			ArrayList<InterGPS2> list = new ArrayList<>();
+			if(quizsublist.size()>0){
+				list.add(quizsublist.get(0));
+			}
 			
-			return quizsublist;
+			return list;
 			
 		}
 	 
