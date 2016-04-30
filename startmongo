@@ -1,0 +1,7 @@
+#!/bin/bash
+# My first script
+
+echo "Hello World!"
+sudo fuser -k 80/tcp
+git pull origin assign3
+mvn package
