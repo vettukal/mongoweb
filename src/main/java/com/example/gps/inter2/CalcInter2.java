@@ -103,7 +103,7 @@ public class CalcInter2  {
 		}
 	 
 	 @RequestMapping(value = "/submitinterlist2", method = RequestMethod.POST)
-	    public @ResponseBody List<InterGPS2> submitInterList(@RequestBody List<InterGPS2> quizsublist) {
+	    public @ResponseBody String submitInterList(@RequestBody List<InterGPS2> quizsublist) {
 			
 //		 for (InterGPS2 quizsub : quizsublist) {
 //			 interrepo.save(quizsub);
@@ -115,7 +115,7 @@ public class CalcInter2  {
 				list.add(quizsublist.get(0));
 			}
 			
-			return list;
+			return "success";
 			
 		}
 	 

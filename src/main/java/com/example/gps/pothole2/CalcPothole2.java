@@ -105,4 +105,10 @@ public class CalcPothole2  {
 		
 	}
 	
+	@RequestMapping(value="/getpothole2", method=RequestMethod.GET)
+    public @ResponseBody List<Pothole2> getpothole() throws Exception {
+		return potrepo.findAll();
+		
+	}
+	
 }
