@@ -1,5 +1,6 @@
 package com.example.gps.inter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class CalcInter  {
 	    public @ResponseBody long greetingForm() throws Exception {
 		 
 		 long starttime = System.currentTimeMillis();
+		 ArrayList<InterGPS> savelist = new ArrayList<>();
 		 
 		 List<Gmobile> gmlist = repo.findAll();
 		 
@@ -95,11 +97,14 @@ public class CalcInter  {
 					intergps.setDiff(diff+"");
 				}
 				
-				interrepo.save(intergps);
+				//interrepo.save(intergps);
+				savelist.add(intergps);
 				
 			}
 				
 		}
+		 
+		 interrepo.save(savelist);
 		 long endtime = System.currentTimeMillis();
 		 return endtime - starttime;
 				 
