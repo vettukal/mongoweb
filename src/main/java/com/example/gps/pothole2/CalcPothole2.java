@@ -126,6 +126,12 @@ public class CalcPothole2  {
 		
 	}
 	
+	@RequestMapping(value="/getpotholedouble2", method=RequestMethod.GET)
+    public @ResponseBody List<PotholeDouble2> getpotholedouble() throws Exception {
+		return pdrepo.findAll();
+		
+	}
+	
 	
 	@RequestMapping(value="/delnearltlgdec", method=RequestMethod.GET)
     public @ResponseBody List<PotholeDouble2> delnearltlgdec(@RequestParam("dec") Double dec) throws Exception {
