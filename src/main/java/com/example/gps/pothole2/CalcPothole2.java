@@ -105,10 +105,44 @@ public class CalcPothole2  {
 		
 	}
 	
+	@RequestMapping(value="/getpotholelatlngdec", method=RequestMethod.GET)
+    public @ResponseBody List<PotholeDouble2> getpotholelatlngdec(@RequestParam("lattitude") Double latt, @RequestParam("longitude") Double longi,@RequestParam("dec") Double dec) throws Exception {
+		
+		double latt1 = latt-dec;
+		double latt2 = latt+dec;
+		
+		double longi1 = longi - dec;
+		double longi2 = longi + dec;
+		
+		return pdrepo.findByLattitudeBetweenAndLongitudeBetween(latt1, latt2, longi1, longi2);
+		//return pdrepo.findByLattitudeBetweenAndLongitudeBetween(20, 30, 40, 90);
+		
+		
+	}
+	
 	@RequestMapping(value="/getpothole2", method=RequestMethod.GET)
     public @ResponseBody List<Pothole2> getpothole() throws Exception {
 		return potrepo.findAll();
 		
 	}
+	
+	
+	@RequestMapping(value="/delnearltlgdec", method=RequestMethod.GET)
+    public @ResponseBody List<PotholeDouble2> delnearltlgdec(@RequestParam("dec") Double dec) throws Exception {
+		
+		List<PotholeDouble2> list = pdrepo.findAll();
+		List<PotholeDouble2> dellist = pdrepo.findAll();
+		for (PotholeDouble2 anchor : list) {
+			List<PotholeDouble2> nearlist = getpotholelatlngdec(anchor.getLattitude(),anchor.getLongitude(),dec);
+			if(nearlist==null) continue;
+			for (int i = 1; i < nearlist.size(); i++) {
+				pdrepo.delete(nearlist.get(i));
+				dellist.add(nearlist.get(i));
+			}
+		}
+		return dellist;
+		
+	}
+	
 	
 }
